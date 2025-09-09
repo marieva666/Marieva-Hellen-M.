@@ -109,7 +109,7 @@ html, body {
   text-decoration: none;
   padding: 10px 14px;
   background: #345e50;           /* flat, dark */
-  color: #345e50;
+  color: #66bd9e;
   font-weight: bold;
   border: 1px solid #2c664f;     /* borda discreta */
   border-radius: 8px;
@@ -124,7 +124,7 @@ html, body {
 }
 
 .nav-vertical ul li a:focus-visible{
-  outline: 2px solid #3f9cff;
+  outline: 2px solid #3e6578;
   outline-offset: 2px;
 }
 
