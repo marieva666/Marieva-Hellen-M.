@@ -1,14 +1,14 @@
 /* ======= BASE ======= */
 body { 
   font-family: Arial, sans-serif;
-  background: #3d555c;
+  background: #5c9c9e;
   padding: 20px;
   text-align: center;            /* centraliza conteúdos gerais */
 }
 
 header {
-  background-color: #3d6b5c; 
-  color: #3b8c7c; 
+  background-color: #1a130c; 
+  color: #2a574b; 
   font-family: Arial, sans-serif; 
   text-align: center; 
   height: 100px; 
@@ -54,8 +54,8 @@ header {
 
 /* ======= PLAYER / CARD ======= */
 .video-box { 
-  background: #097880;
-  padding: 10px;#2a3245
+  background: #24201e;
+  padding: 10px; #3b7566;
   border-radius: 6px;
   max-width: 560px;
   margin: 0 auto;
@@ -76,11 +76,11 @@ header {
 .info h3 {
   font-size: 16px;
   margin: 4px 0;
-  color: #094c80;
+  color: #254b52;
 }
 .info p {
   font-size: 13px;
-  color: #094c80;
+  color: #224d4a;
 }
 html, body { 
   margin: 0; 
