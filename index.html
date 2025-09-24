@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MARY's MP3 & VIDEO</title>
   <style>
-    /* CSS básico para funcionalidade */
     * {
       margin: 0;
       padding: 0;
@@ -47,18 +46,33 @@
     
     .video-box {
       text-align: center;
+      max-width: 800px;
+      width: 100%;
+    }
+    
+    .video-container {
+      position: relative;
+      width: 100%;
+      height: 0;
+      padding-bottom: 56.25%; /* Proporção 16:9 */
     }
     
     .video-frame {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       border: 2px solid #24160f;
       border-radius: 5px;
     }
     
     .info {
       margin-top: 15px;
-      padding: 10px;
+      padding: 15px;
       background-color: #fff;
       border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
     
     .nav-vertical ul {
@@ -71,12 +85,13 @@
     
     .nav-vertical a {
       display: block;
-      padding: 8px 12px;
+      padding: 10px 12px;
       background-color: #414680;
       color: white;
       text-decoration: none;
       border-radius: 4px;
       transition: background-color 0.3s;
+      font-size: 14px;
     }
     
     .nav-vertical a:hover {
@@ -84,9 +99,17 @@
     }
     
     select {
-      padding: 5px;
+      padding: 8px;
       border-radius: 4px;
       border: 1px solid #ccc;
+      width: 100%;
+      margin-top: 5px;
+    }
+    
+    h2 {
+      color: #414680;
+      margin: 16px 0 10px 0;
+      font-size: 16px;
     }
   </style>
 </head>
@@ -95,13 +118,10 @@
     <h1>MARY's MP3 & VIDEO</h1>
   </header>
 
-  <!-- LAYOUT: MENU LATERAL (ESQ) + VÍDEO (DIR) -->
   <div class="layout">
-    <!-- LATERAL ESQUERDA -->
     <aside class="sidebar">
-      <!-- Seletor de tema -->
       <section style="padding:12px 0;">
-        <label for="tema" style="color:#24160f; margin-right:8px;">ESCOLHA O TEMA:</label>
+        <label for="tema" style="color:#24160f; display:block; font-weight:bold;">ESCOLHA O TEMA:</label>
         <select id="tema">
           <option value="METAL">METAL</option>
           <option value="DSBM">DSBM</option>
@@ -110,16 +130,12 @@
         </select>
       </section>
 
-      <!-- Menu dinâmico gerado via JS -->
       <nav class="nav-vertical" aria-label="Lista de vídeos do tema">
         <ul id="menu-temas"><!-- Itens gerados via JS --></ul>
       </nav>
 
-      <!-- Menu fixo adicional -->
       <br>
-      <h2 style="font-size:15px; color:#414680; margin:16px 0; text-align:left;">
-        VÍDEOS EXTERNOS DO YOUTUBE👇
-      </h2>
+      <h2>VÍDEOS EXTERNOS DO YOUTUBE👇</h2>
       <nav class="nav-vertical" aria-label="Vídeos fixos">
         <ul>
           <li><a href="https://youtu.be/VRPxao3e_jY?si=k_Z5HUkAd3PXaU2L" target="_blank" rel="noopener">Right Now - Korn</a></li>
@@ -131,19 +147,18 @@
       </nav>
     </aside>
 
-    <!-- PLAYER À DIREITA -->
     <main class="player">
       <div class="video-box">
-        <iframe
-          class="video-frame"
-          width="560"
-          height="315"
-          src="https://www.youtube.com/embed/UCCyoocDxBA"
-          title="Player de vídeo"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
-        ></iframe>
+        <div class="video-container">
+          <iframe
+            class="video-frame"
+            src="https://www.youtube.com/embed/UCCyoocDxBA"
+            title="Player de vídeo"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+        </div>
 
         <div class="info">
           <h3>HELENA</h3>
@@ -153,106 +168,108 @@
     </main>
   </div>
 
-  <!-- JavaScript -->
   <script>
-    // Mapa de temas → lista de vídeos
+    // Mapa de temas → lista de vídeos (agora com IDs corretos para embed)
     const TEMAS = {
       METAL: [
         { titulo: "A Place For My Head", 
          autor: "Linkin Park", 
-         url: "https://youtu.be/vjVkXlxsO8Q?si=uEnJqLBBjOswFgdW" 
+         url: "https://www.youtube.com/embed/vjVkXlxsO8Q" 
         },
         { titulo: "Did My Time", 
          autor: "Korn", 
-         url: "https://youtu.be/xmOOGeZE-aE?si=2YqNBA8CBQH9TP28" 
+         url: "https://www.youtube.com/embed/xmOOGeZE-aE" 
         },
         { titulo: "Holy Wars...The Punishment Due", 
          autor: "Megadeth", 
-         url: "https://youtu.be/9d4ui9q7eDM?si=9aE1jV55fSV2pG1H" 
+         url: "https://www.youtube.com/embed/9d4ui9q7eDM" 
         },
         { titulo: "Hollow", 
          autor: "Pantera", 
-         url: "https://youtu.be/ImXNU8Kg4H0?si=FftwizxVm-9xWuLu" 
+         url: "https://www.youtube.com/embed/ImXNU8Kg4H0" 
         },
         { titulo: "Black Metal", 
          autor: "Venom", 
-         url: "https://youtu.be/rYg5c_LrsRk?si=EekUYQI68_exkZhA" 
+         url: "https://www.youtube.com/embed/rYg5c_LrsRk" 
         }],
       DSBM: [
         { titulo: "Alcoholism", 
          autor: "Psychonaut 4", 
-         url: "https://youtu.be/oJMrD_FZbTE?si=BNHPzzLNgQDkTylG" 
+         url: "https://www.youtube.com/embed/oJMrD_FZbTE" 
         },
         { titulo: "Loneliness", 
          autor: "Decalius", 
-         url: "https://youtu.be/jbNZym6bEt8?si=eEQ5ddGnQTAN8Hn6" 
+         url: "https://www.youtube.com/embed/jbNZym6bEt8" 
         },
         { titulo: "Screaming at Forgotten Tears", 
          autor: "Xasthur", 
-         url: "https://youtu.be/BIkNLwmpMV0?si=x4d5CQF5Be9OZz6a"
+         url: "https://www.youtube.com/embed/BIkNLwmpMV0"
         },
         { titulo: "Too Late to Call an Ambulance", 
          autor: "Psychonaut 4", 
-         url: "https://youtu.be/T6R8JupPTWc?si=38k5v1jtkyQPSNFz" 
+         url: "https://www.youtube.com/embed/T6R8JupPTWc" 
         },
         { titulo: "Don't Go", 
          autor: "Happy Days", 
-         url: "https://youtu.be/02d5lTEU1_c?si=yLbvMdJi8N3kswiS" 
+         url: "https://www.youtube.com/embed/02d5lTEU1_c" 
         }],
       ROCK: [
         { titulo: "My Own Prison", 
          autor: "Creed", 
-         url: "https://youtu.be/iBBqjGd3fHQ?si=uZUVfE82fFsBNRqj" 
+         url: "https://www.youtube.com/embed/iBBqjGd3fHQ" 
         },
         { titulo: "Um Minuto Para O Fim Do Mundo", 
          autor: "CPM22", 
-         url: "https://youtu.be/RsEeyZNiwUk?si=TvUaLKRpcPNLi8hK" 
+         url: "https://www.youtube.com/embed/RsEeyZNiwUk" 
         },
         { titulo: "Teto de Vidro", 
          autor: "Pitty", 
-         url: "https://youtu.be/hWhl6ijsAXw?si=WUIrfkLZUvFW7sic" 
+         url: "https://www.youtube.com/embed/hWhl6ijsAXw" 
         },
         { titulo: "Life on Mars", 
          autor: "David Bowie", 
-         url: "https://youtu.be/ft3b1-Cm-0M?si=g2Of-y47TgHxE19q" 
+         url: "https://www.youtube.com/embed/ft3b1-Cm-0M" 
         },
         { titulo: "21 Guns", 
          autor: "Green Day", 
-         url: "https://youtu.be/r00ikilDxW4?si=y_TzwxPTOOxfkiLn" 
+         url: "https://www.youtube.com/embed/r00ikilDxW4" 
         }],
       PUNK: [
         { titulo: "Saturday Night", 
          autor: "Misfits", 
-         url: "https://youtu.be/NcuoXEiLcQw?si=8Ss_DnylmVEVRiUj" 
+         url: "https://www.youtube.com/embed/NcuoXEiLcQw" 
         },
         { titulo: "Oi, Tudo Bem", 
          autor: "Garotos Podres", 
-         url: "https://youtu.be/dbCe_WBFVg0?si=jqUmiHISVvmq9mat" 
+         url: "https://www.youtube.com/embed/dbCe_WBFVg0" 
         },
         { titulo: "Anarkia Oi", 
          autor: "Garotos Podres", 
-         url: "https://youtu.be/AskMdmbRN00?si=ETLrmMYrR3R0rM4K" 
+         url: "https://www.youtube.com/embed/AskMdmbRN00" 
         },
         { titulo: "Dig Up Her Bones", 
          autor: "Misfits", 
-         url: "https://youtu.be/lgSLz5FeXUg?si=Dd88nXwO_8iNHjoT" 
+         url: "https://www.youtube.com/embed/lgSLz5FeXUg" 
         },
         { titulo: "Padrão é o Caralho", 
          autor: "Black Pantera", 
-         url: "https://youtu.be/7yIAlsW-BEY?si=6x2KwlGUDuFilQq1" 
+         url: "https://www.youtube.com/embed/7yIAlsW-BEY" 
         }],
     };
 
     // Seletores
     const selectTema = document.getElementById("tema");
-    const menuUl     = document.getElementById("menu-temas");
-    const iframeEl   = document.querySelector(".video-frame");
+    const menuUl = document.getElementById("menu-temas");
+    const iframeEl = document.querySelector(".video-frame");
     const infoTitulo = document.querySelector(".info h3");
-    const infoAutor  = document.querySelector(".info p");
+    const infoAutor = document.querySelector(".info p");
 
-    // Converte URL normal do YouTube para /embed
+    // Função para converter URL normal para embed (caso precise)
     function toEmbed(url) {
       try {
+        // Se já for uma URL de embed, retorna como está
+        if (url.includes('youtube.com/embed/')) return url;
+        
         const u = new URL(url);
         const id = u.searchParams.get("v");
         if (id) return `https://www.youtube.com/embed/${id}`;
@@ -270,7 +287,7 @@
 
       lista.forEach((video) => {
         const li = document.createElement("li");
-        const a  = document.createElement("a");
+        const a = document.createElement("a");
         a.href = "#";
         a.textContent = video.titulo.toUpperCase();
         a.setAttribute("role", "button");
@@ -289,7 +306,7 @@
     function trocarVideo(video) {
       iframeEl.src = toEmbed(video.url);
       infoTitulo.textContent = video.titulo.toUpperCase();
-      infoAutor.textContent  = `${video.autor.toUpperCase()}.`;
+      infoAutor.textContent = `${video.autor.toUpperCase()}.`;
     }
 
     // Inicialização
