@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MARY's MP3 & VIDEO</title>
+  <title>MARY's MP3 & VIDEO - ROCK & METAL</title>
   <style>
     * {
       margin: 0;
@@ -12,49 +12,205 @@
     }
     
     body {
-      font-family: Arial, sans-serif;
-      background-color: #f0f0f0;
-      color: #333;
+      font-family: 'Arial Black', 'Impact', sans-serif;
+      background: linear-gradient(135deg, #1a1a1a 0%, #2d1b0f 100%);
+      color: #fff;
+      min-height: 100vh;
+      background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.05"><text x="50" y="50" font-size="80" text-anchor="middle" dominant-baseline="middle">🤘</text></svg>');
     }
     
+    /* Header Estiloso */
     header {
-      background-color: #24160f;
-      color: white;
+      background: linear-gradient(90deg, #24160f 0%, #8b0000 50%, #24160f 100%);
+      padding: 25px 20px;
+      text-align: center;
+      border-bottom: 5px solid #ffd700;
+      position: relative;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.7);
+    }
+    
+    header::before {
+      content: "🎸";
+      position: absolute;
+      left: 30px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 40px;
+    }
+    
+    header::after {
+      content: "🥁";
+      position: absolute;
+      right: 30px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 40px;
+    }
+    
+    header h1 {
+      font-size: 3em;
+      text-shadow: 3px 3px 0 #000, 6px 6px 0 #8b0000;
+      color: #ffd700;
+      letter-spacing: 3px;
+      margin: 0;
+    }
+    
+    header h1::after {
+      content: "🎤";
+      margin-left: 15px;
+      font-size: 0.8em;
+    }
+    
+    /* Layout Principal */
+    .layout {
+      display: flex;
+      min-height: calc(100vh - 120px);
+      gap: 20px;
       padding: 20px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    
+    /* Sidebar Rockeiro */
+    .sidebar {
+      width: 350px;
+      background: linear-gradient(180deg, #2d1b0f 0%, #24160f 100%);
+      border: 3px solid #ffd700;
+      border-radius: 15px;
+      padding: 25px;
+      box-shadow: 5px 5px 15px rgba(0,0,0,0.6);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .sidebar::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 5px;
+      background: linear-gradient(90deg, #ff0000, #ffd700, #ff0000);
+    }
+    
+    /* Seletor de Tema */
+    .tema-selector {
+      background: #414680;
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 25px;
+      border: 2px solid #ffd700;
       text-align: center;
     }
     
-    .layout {
-      display: flex;
-      min-height: 80vh;
+    .tema-selector label {
+      display: block;
+      color: #ffd700;
+      font-size: 1.2em;
+      margin-bottom: 10px;
+      text-shadow: 2px 2px 0 #000;
     }
     
-    .sidebar {
-      width: 300px;
-      background-color: #e0e0e0;
-      padding: 20px;
-      overflow-y: auto;
+    #tema {
+      width: 100%;
+      padding: 12px;
+      background: #24160f;
+      color: #ffd700;
+      border: 2px solid #8b0000;
+      border-radius: 8px;
+      font-size: 1.1em;
+      font-weight: bold;
+      cursor: pointer;
     }
     
+    /* Navegação */
+    .nav-vertical ul {
+      list-style: none;
+    }
+    
+    .nav-vertical li {
+      margin-bottom: 12px;
+      transition: transform 0.3s;
+    }
+    
+    .nav-vertical li:hover {
+      transform: translateX(5px);
+    }
+    
+    .nav-vertical a {
+      display: block;
+      padding: 15px;
+      background: linear-gradient(90deg, #414680 0%, #2d325c 100%);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 8px;
+      border-left: 5px solid #ffd700;
+      transition: all 0.3s;
+      font-size: 14px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .nav-vertical a::before {
+      content: "▶";
+      position: absolute;
+      left: 10px;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    
+    .nav-vertical a:hover {
+      background: linear-gradient(90deg, #8b0000 0%, #ff0000 100%);
+      transform: scale(1.05);
+      border-left-color: #ff0000;
+    }
+    
+    .nav-vertical a:hover::before {
+      opacity: 1;
+    }
+    
+    /* Player de Vídeo */
     .player {
       flex: 1;
-      padding: 20px;
       display: flex;
       justify-content: center;
       align-items: flex-start;
     }
     
     .video-box {
-      text-align: center;
-      max-width: 800px;
+      background: linear-gradient(135deg, #24160f 0%, #2d1b0f 100%);
+      border: 3px solid #ffd700;
+      border-radius: 15px;
+      padding: 25px;
+      box-shadow: 5px 5px 20px rgba(0,0,0,0.7);
       width: 100%;
+      max-width: 800px;
+      position: relative;
+    }
+    
+    .video-box::before {
+      content: "🎬 NOW PLAYING";
+      position: absolute;
+      top: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #8b0000;
+      color: #ffd700;
+      padding: 5px 20px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: bold;
+      border: 2px solid #ffd700;
     }
     
     .video-container {
       position: relative;
       width: 100%;
       height: 0;
-      padding-bottom: 56.25%; /* Proporção 16:9 */
+      padding-bottom: 56.25%;
+      border: 2px solid #414680;
+      border-radius: 10px;
+      overflow: hidden;
     }
     
     .video-frame {
@@ -63,86 +219,169 @@
       left: 0;
       width: 100%;
       height: 100%;
-      border: 2px solid #24160f;
-      border-radius: 5px;
+      border: none;
     }
     
     .info {
-      margin-top: 15px;
-      padding: 15px;
-      background-color: #fff;
-      border-radius: 5px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      margin-top: 20px;
+      padding: 20px;
+      background: #414680;
+      border-radius: 10px;
+      border: 2px solid #ffd700;
+      text-align: center;
     }
     
-    .nav-vertical ul {
-      list-style: none;
+    .info h3 {
+      color: #ffd700;
+      font-size: 1.8em;
+      margin-bottom: 10px;
+      text-shadow: 2px 2px 0 #000;
+      letter-spacing: 2px;
     }
     
-    .nav-vertical li {
-      margin-bottom: 8px;
+    .info p {
+      color: #fff;
+      font-size: 1.3em;
+      font-weight: bold;
+      text-shadow: 1px 1px 0 #000;
     }
     
-    .nav-vertical a {
-      display: block;
-      padding: 10px 12px;
-      background-color: #414680;
-      color: white;
-      text-decoration: none;
-      border-radius: 4px;
-      transition: background-color 0.3s;
-      font-size: 14px;
+    /* Títulos das Seções */
+    .section-title {
+      color: #ffd700;
+      font-size: 1.4em;
+      margin: 25px 0 15px 0;
+      text-align: center;
+      text-shadow: 2px 2px 0 #000;
+      position: relative;
+      padding-bottom: 10px;
     }
     
-    .nav-vertical a:hover {
-      background-color: #2d325c;
+    .section-title::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 25%;
+      width: 50%;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, #ffd700, transparent);
     }
     
-    select {
-      padding: 8px;
-      border-radius: 4px;
-      border: 1px solid #ccc;
-      width: 100%;
-      margin-top: 5px;
+    /* Efeitos de Áudio Visual */
+    .audio-visual {
+      display: flex;
+      justify-content: space-between;
+      margin: 15px 0;
+      opacity: 0.6;
     }
     
-    h2 {
-      color: #414680;
-      margin: 16px 0 10px 0;
-      font-size: 16px;
+    .bar {
+      width: 4px;
+      height: 20px;
+      background: #ffd700;
+      animation: equalizer 1s infinite ease-in-out;
+      animation-delay: calc(var(--i) * 0.1s);
+    }
+    
+    @keyframes equalizer {
+      0%, 100% { height: 10px; }
+      50% { height: 25px; }
+    }
+    
+    /* Footer Rockeiro */
+    footer {
+      background: #24160f;
+      text-align: center;
+      padding: 20px;
+      border-top: 3px solid #ffd700;
+      margin-top: 20px;
+    }
+    
+    footer p {
+      color: #ffd700;
+      font-size: 1.1em;
+      text-shadow: 1px 1px 0 #000;
+    }
+    
+    /* Responsividade */
+    @media (max-width: 768px) {
+      .layout {
+        flex-direction: column;
+      }
+      
+      .sidebar {
+        width: 100%;
+      }
+      
+      header h1 {
+        font-size: 2em;
+      }
+      
+      header::before,
+      header::after {
+        display: none;
+      }
+    }
+    
+    /* Efeito de Glitch no hover dos botões */
+    .glitch-effect {
+      position: relative;
+    }
+    
+    .glitch-effect:hover {
+      animation: glitch 0.3s infinite;
+    }
+    
+    @keyframes glitch {
+      0% { transform: translate(0); }
+      20% { transform: translate(-2px, 2px); }
+      40% { transform: translate(-2px, -2px); }
+      60% { transform: translate(2px, 2px); }
+      80% { transform: translate(2px, -2px); }
+      100% { transform: translate(0); }
     }
   </style>
 </head>
 <body>
   <header>
     <h1>MARY's MP3 & VIDEO</h1>
+    <div class="audio-visual">
+      <div class="bar" style="--i:0"></div>
+      <div class="bar" style="--i:1"></div>
+      <div class="bar" style="--i:2"></div>
+      <div class="bar" style="--i:3"></div>
+      <div class="bar" style="--i:4"></div>
+      <div class="bar" style="--i:5"></div>
+      <div class="bar" style="--i:6"></div>
+      <div class="bar" style="--i:7"></div>
+    </div>
   </header>
 
   <div class="layout">
     <aside class="sidebar">
-      <section style="padding:12px 0;">
-        <label for="tema" style="color:#24160f; display:block; font-weight:bold;">ESCOLHA O TEMA:</label>
+      <section class="tema-selector">
+        <label for="tema">🎵 ESCOLHA O TEMA:</label>
         <select id="tema">
-          <option value="METAL">METAL</option>
-          <option value="DSBM">DSBM</option>
-          <option value="ROCK">ROCK-CLASSICO</option>
-          <option value="PUNK">PUNK-ROCK</option>
+          <option value="METAL">🤘 METAL PESADO</option>
+          <option value="DSBM">😈 DSBM - DEPRESSIVE BLACK METAL</option>
+          <option value="ROCK">🎸 ROCK CLÁSSICO</option>
+          <option value="PUNK">💀 PUNK ROCK</option>
         </select>
       </section>
 
+      <h2 class="section-title">📀 VÍDEOS DO TEMA</h2>
       <nav class="nav-vertical" aria-label="Lista de vídeos do tema">
         <ul id="menu-temas"><!-- Itens gerados via JS --></ul>
       </nav>
 
-      <br>
-      <h2>VÍDEOS EXTERNOS DO YOUTUBE👇</h2>
+      <h2 class="section-title">🔥 VÍDEOS EXTERNOS</h2>
       <nav class="nav-vertical" aria-label="Vídeos fixos">
         <ul>
-          <li><a href="https://youtu.be/VRPxao3e_jY?si=k_Z5HUkAd3PXaU2L" target="_blank" rel="noopener">Right Now - Korn</a></li>
-          <li><a href="https://youtu.be/3mbBbFH9fAg?si=tP2RzUEzVEeZF42K" target="_blank" rel="noopener">Black Hole Sun - Soundgarden</a></li>
-          <li><a href="https://youtu.be/RYnFIRc0k6E?si=mo5JKPTkD6HJ25CN" target="_blank" rel="noopener">Rollin' (Air Raid Vehicle) - Limp Bizkit</a></li>
-          <li><a href="https://youtu.be/eNvUS-6PTbs?si=H-Ufkpz9tGQRe8s2" target="_blank" rel="noopener">Cheri Cheri Lady - Modern Talking</a></li>
-          <li><a href="https://youtu.be/djV11Xbc914?si=AfY-YHNBkyHbKw2_" target="_blank" rel="noopener">Take On Me - a-ha</a></li>
+          <li><a href="https://youtu.be/VRPxao3e_jY" target="_blank" rel="noopener" class="glitch-effect">🎸 Right Now - Korn</a></li>
+          <li><a href="https://youtu.be/3mbBbFH9fAg" target="_blank" rel="noopener" class="glitch-effect">🌞 Black Hole Sun - Soundgarden</a></li>
+          <li><a href="https://youtu.be/RYnFIRc0k6E" target="_blank" rel="noopener" class="glitch-effect">🔥 Rollin' - Limp Bizkit</a></li>
+          <li><a href="https://youtu.be/eNvUS-6PTbs" target="_blank" rel="noopener" class="glitch-effect">👨‍🎤 Cheri Cheri Lady - Modern Talking</a></li>
+          <li><a href="https://youtu.be/djV11Xbc914" target="_blank" rel="noopener" class="glitch-effect">🎨 Take On Me - a-ha</a></li>
         </ul>
       </nav>
     </aside>
@@ -154,7 +393,6 @@
             class="video-frame"
             src="https://www.youtube.com/embed/UCCyoocDxBA"
             title="Player de vídeo"
-            frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen
           ></iframe>
@@ -162,114 +400,58 @@
 
         <div class="info">
           <h3>HELENA</h3>
-          <p>MY CHEMICAL ROMANCE.</p>
+          <p>MY CHEMICAL ROMANCE</p>
         </div>
       </div>
     </main>
   </div>
 
+  <footer>
+    <p>🎧 MARY's MP3 & VIDEO - O MELHOR DO ROCK E METAL 🎧</p>
+    <p>© 2024 - Todos os direitos reservados</p>
+  </footer>
+
   <script>
-    // Mapa de temas → lista de vídeos (agora com IDs corretos para embed)
     const TEMAS = {
       METAL: [
-        { titulo: "A Place For My Head", 
-         autor: "Linkin Park", 
-         url: "https://www.youtube.com/embed/vjVkXlxsO8Q" 
-        },
-        { titulo: "Did My Time", 
-         autor: "Korn", 
-         url: "https://www.youtube.com/embed/xmOOGeZE-aE" 
-        },
-        { titulo: "Holy Wars...The Punishment Due", 
-         autor: "Megadeth", 
-         url: "https://www.youtube.com/embed/9d4ui9q7eDM" 
-        },
-        { titulo: "Hollow", 
-         autor: "Pantera", 
-         url: "https://www.youtube.com/embed/ImXNU8Kg4H0" 
-        },
-        { titulo: "Black Metal", 
-         autor: "Venom", 
-         url: "https://www.youtube.com/embed/rYg5c_LrsRk" 
-        }],
+        { titulo: "A Place For My Head", autor: "Linkin Park", url: "https://www.youtube.com/embed/vjVkXlxsO8Q" },
+        { titulo: "Did My Time", autor: "Korn", url: "https://www.youtube.com/embed/xmOOGeZE-aE" },
+        { titulo: "Holy Wars...The Punishment Due", autor: "Megadeth", url: "https://www.youtube.com/embed/9d4ui9q7eDM" },
+        { titulo: "Hollow", autor: "Pantera", url: "https://www.youtube.com/embed/ImXNU8Kg4H0" },
+        { titulo: "Black Metal", autor: "Venom", url: "https://www.youtube.com/embed/rYg5c_LrsRk" }
+      ],
       DSBM: [
-        { titulo: "Alcoholism", 
-         autor: "Psychonaut 4", 
-         url: "https://www.youtube.com/embed/oJMrD_FZbTE" 
-        },
-        { titulo: "Loneliness", 
-         autor: "Decalius", 
-         url: "https://www.youtube.com/embed/jbNZym6bEt8" 
-        },
-        { titulo: "Screaming at Forgotten Tears", 
-         autor: "Xasthur", 
-         url: "https://www.youtube.com/embed/BIkNLwmpMV0"
-        },
-        { titulo: "Too Late to Call an Ambulance", 
-         autor: "Psychonaut 4", 
-         url: "https://www.youtube.com/embed/T6R8JupPTWc" 
-        },
-        { titulo: "Don't Go", 
-         autor: "Happy Days", 
-         url: "https://www.youtube.com/embed/02d5lTEU1_c" 
-        }],
+        { titulo: "Alcoholism", autor: "Psychonaut 4", url: "https://www.youtube.com/embed/oJMrD_FZbTE" },
+        { titulo: "Loneliness", autor: "Decalius", url: "https://www.youtube.com/embed/jbNZym6bEt8" },
+        { titulo: "Screaming at Forgotten Tears", autor: "Xasthur", url: "https://www.youtube.com/embed/BIkNLwmpMV0" },
+        { titulo: "Too Late to Call an Ambulance", autor: "Psychonaut 4", url: "https://www.youtube.com/embed/T6R8JupPTWc" },
+        { titulo: "Don't Go", autor: "Happy Days", url: "https://www.youtube.com/embed/02d5lTEU1_c" }
+      ],
       ROCK: [
-        { titulo: "My Own Prison", 
-         autor: "Creed", 
-         url: "https://www.youtube.com/embed/iBBqjGd3fHQ" 
-        },
-        { titulo: "Um Minuto Para O Fim Do Mundo", 
-         autor: "CPM22", 
-         url: "https://www.youtube.com/embed/RsEeyZNiwUk" 
-        },
-        { titulo: "Teto de Vidro", 
-         autor: "Pitty", 
-         url: "https://www.youtube.com/embed/hWhl6ijsAXw" 
-        },
-        { titulo: "Life on Mars", 
-         autor: "David Bowie", 
-         url: "https://www.youtube.com/embed/ft3b1-Cm-0M" 
-        },
-        { titulo: "21 Guns", 
-         autor: "Green Day", 
-         url: "https://www.youtube.com/embed/r00ikilDxW4" 
-        }],
+        { titulo: "My Own Prison", autor: "Creed", url: "https://www.youtube.com/embed/iBBqjGd3fHQ" },
+        { titulo: "Um Minuto Para O Fim Do Mundo", autor: "CPM22", url: "https://www.youtube.com/embed/RsEeyZNiwUk" },
+        { titulo: "Teto de Vidro", autor: "Pitty", url: "https://www.youtube.com/embed/hWhl6ijsAXw" },
+        { titulo: "Life on Mars", autor: "David Bowie", url: "https://www.youtube.com/embed/v--IqqusnNQ" },
+        { titulo: "21 Guns", autor: "Green Day", url: "https://www.youtube.com/embed/r00ikilDxW4" }
+      ],
       PUNK: [
-        { titulo: "Saturday Night", 
-         autor: "Misfits", 
-         url: "https://www.youtube.com/embed/NcuoXEiLcQw" 
-        },
-        { titulo: "Oi, Tudo Bem", 
-         autor: "Garotos Podres", 
-         url: "https://www.youtube.com/embed/dbCe_WBFVg0" 
-        },
-        { titulo: "Anarkia Oi", 
-         autor: "Garotos Podres", 
-         url: "https://www.youtube.com/embed/AskMdmbRN00" 
-        },
-        { titulo: "Dig Up Her Bones", 
-         autor: "Misfits", 
-         url: "https://www.youtube.com/embed/lgSLz5FeXUg" 
-        },
-        { titulo: "Padrão é o Caralho", 
-         autor: "Black Pantera", 
-         url: "https://www.youtube.com/embed/7yIAlsW-BEY" 
-        }],
+        { titulo: "Saturday Night", autor: "Misfits", url: "https://www.youtube.com/embed/NcuoXEiLcQw" },
+        { titulo: "Oi, Tudo Bem", autor: "Garotos Podres", url: "https://www.youtube.com/embed/dbCe_WBFVg0" },
+        { titulo: "Anarkia Oi", autor: "Garotos Podres", url: "https://www.youtube.com/embed/AskMdmbRN00" },
+        { titulo: "Dig Up Her Bones", autor: "Misfits", url: "https://www.youtube.com/embed/lgSLz5FeXUg" },
+        { titulo: "Padrão é o Caralho", autor: "Black Pantera", url: "https://www.youtube.com/embed/7yIAlsW-BEY" }
+      ],
     };
 
-    // Seletores
     const selectTema = document.getElementById("tema");
     const menuUl = document.getElementById("menu-temas");
     const iframeEl = document.querySelector(".video-frame");
     const infoTitulo = document.querySelector(".info h3");
     const infoAutor = document.querySelector(".info p");
 
-    // Função para converter URL normal para embed (caso precise)
     function toEmbed(url) {
       try {
-        // Se já for uma URL de embed, retorna como está
         if (url.includes('youtube.com/embed/')) return url;
-        
         const u = new URL(url);
         const id = u.searchParams.get("v");
         if (id) return `https://www.youtube.com/embed/${id}`;
@@ -280,17 +462,17 @@
       }
     }
 
-    // Renderiza o menu com base no tema
     function renderMenu(tema) {
       const lista = TEMAS[tema] || [];
       menuUl.innerHTML = "";
 
-      lista.forEach((video) => {
+      lista.forEach((video, index) => {
         const li = document.createElement("li");
         const a = document.createElement("a");
         a.href = "#";
-        a.textContent = video.titulo.toUpperCase();
+        a.innerHTML = `🎵 ${video.titulo.toUpperCase()}`;
         a.setAttribute("role", "button");
+        a.classList.add("glitch-effect");
         a.addEventListener("click", (e) => {
           e.preventDefault();
           trocarVideo(video);
@@ -302,16 +484,29 @@
       if (lista.length) trocarVideo(lista[0]);
     }
 
-    // Troca o vídeo e informações
     function trocarVideo(video) {
       iframeEl.src = toEmbed(video.url);
       infoTitulo.textContent = video.titulo.toUpperCase();
-      infoAutor.textContent = `${video.autor.toUpperCase()}.`;
+      infoAutor.textContent = video.autor.toUpperCase();
+      
+      // Efeito visual ao trocar vídeo
+      const info = document.querySelector('.info');
+      info.style.animation = 'none';
+      setTimeout(() => {
+        info.style.animation = 'glitch 0.3s';
+      }, 10);
     }
 
     // Inicialização
     renderMenu(selectTema.value);
-    selectTema.addEventListener("change", () => renderMenu(selectTema.value));
+    selectTema.addEventListener("change", () => {
+      renderMenu(selectTema.value);
+    });
+
+    // Efeito de equalizador animado
+    document.querySelectorAll('.bar').forEach((bar, i) => {
+      bar.style.animationDelay = `${i * 0.1}s`;
+    });
   </script>
 </body>
 </html>
