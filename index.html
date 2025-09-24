@@ -2,8 +2,93 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MARY's MP3 & VIDEO</title>
-  <link rel="stylesheet" href="style.css"/>
+  <style>
+    /* CSS básico para funcionalidade */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      color: #333;
+    }
+    
+    header {
+      background-color: #24160f;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    
+    .layout {
+      display: flex;
+      min-height: 80vh;
+    }
+    
+    .sidebar {
+      width: 300px;
+      background-color: #e0e0e0;
+      padding: 20px;
+      overflow-y: auto;
+    }
+    
+    .player {
+      flex: 1;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+    }
+    
+    .video-box {
+      text-align: center;
+    }
+    
+    .video-frame {
+      border: 2px solid #24160f;
+      border-radius: 5px;
+    }
+    
+    .info {
+      margin-top: 15px;
+      padding: 10px;
+      background-color: #fff;
+      border-radius: 5px;
+    }
+    
+    .nav-vertical ul {
+      list-style: none;
+    }
+    
+    .nav-vertical li {
+      margin-bottom: 8px;
+    }
+    
+    .nav-vertical a {
+      display: block;
+      padding: 8px 12px;
+      background-color: #414680;
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+    }
+    
+    .nav-vertical a:hover {
+      background-color: #2d325c;
+    }
+    
+    select {
+      padding: 5px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -13,7 +98,7 @@
   <!-- LAYOUT: MENU LATERAL (ESQ) + VÍDEO (DIR) -->
   <div class="layout">
     <!-- LATERAL ESQUERDA -->
-    <aside class="sidebar compacto">
+    <aside class="sidebar">
       <!-- Seletor de tema -->
       <section style="padding:12px 0;">
         <label for="tema" style="color:#24160f; margin-right:8px;">ESCOLHA O TEMA:</label>
@@ -32,16 +117,16 @@
 
       <!-- Menu fixo adicional -->
       <br>
-      <h1 style="font-size:15px; color:#414680; margin:16px 0; text-align:left;">
-  VÍDEOS EXTERNOS DO YOUTUBE👇
-</h1>
+      <h2 style="font-size:15px; color:#414680; margin:16px 0; text-align:left;">
+        VÍDEOS EXTERNOS DO YOUTUBE👇
+      </h2>
       <nav class="nav-vertical" aria-label="Vídeos fixos">
         <ul>
-          <li><a href="https://youtu.be/VRPxao3e_jY?si=k_Z5HUkAd3PXaU2L" target="_blank">Right Now - Korn</a></li>
-          <li><a href="https://youtu.be/3mbBbFH9fAg?si=tP2RzUEzVEeZF42K" target="_blank">Black Hole Sun -  Soundgarden</a></li>
-          <li><a href="https://youtu.be/RYnFIRc0k6E?si=mo5JKPTkD6HJ25CN" target="_blank">Rollin' (Air Raid Vehicle) - Limp Bizkit</a></li>
-          <li><a href="https://youtu.be/eNvUS-6PTbs?si=H-Ufkpz9tGQRe8s2" target="_blank">Cheri Cheri Lady -  Modern Talking</a></li>
-          <li><a href="https://youtu.be/djV11Xbc914?si=AfY-YHNBkyHbKw2_" target="_blank">Take On Me - a-ha </a></li>
+          <li><a href="https://youtu.be/VRPxao3e_jY?si=k_Z5HUkAd3PXaU2L" target="_blank" rel="noopener">Right Now - Korn</a></li>
+          <li><a href="https://youtu.be/3mbBbFH9fAg?si=tP2RzUEzVEeZF42K" target="_blank" rel="noopener">Black Hole Sun - Soundgarden</a></li>
+          <li><a href="https://youtu.be/RYnFIRc0k6E?si=mo5JKPTkD6HJ25CN" target="_blank" rel="noopener">Rollin' (Air Raid Vehicle) - Limp Bizkit</a></li>
+          <li><a href="https://youtu.be/eNvUS-6PTbs?si=H-Ufkpz9tGQRe8s2" target="_blank" rel="noopener">Cheri Cheri Lady - Modern Talking</a></li>
+          <li><a href="https://youtu.be/djV11Xbc914?si=AfY-YHNBkyHbKw2_" target="_blank" rel="noopener">Take On Me - a-ha</a></li>
         </ul>
       </nav>
     </aside>
@@ -51,17 +136,18 @@
       <div class="video-box">
         <iframe
           class="video-frame"
-          width="540"
-          height="310"
-          src="https://youtu.be/UCCyoocDxBA?si=__gzjDb0vo79qyiC"
+          width="560"
+          height="315"
+          src="https://www.youtube.com/embed/UCCyoocDxBA"
           title="Player de vídeo"
           frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen
         ></iframe>
 
         <div class="info">
-          <h3>Helena</h3>
-          <p>My Chemical Romance.</p>
+          <h3>HELENA</h3>
+          <p>MY CHEMICAL ROMANCE.</p>
         </div>
       </div>
     </main>
@@ -91,7 +177,7 @@
         { titulo: "Black Metal", 
          autor: "Venom", 
          url: "https://youtu.be/rYg5c_LrsRk?si=EekUYQI68_exkZhA" 
-      ],
+        }],
       DSBM: [
         { titulo: "Alcoholism", 
          autor: "Psychonaut 4", 
@@ -112,7 +198,7 @@
         { titulo: "Don't Go", 
          autor: "Happy Days", 
          url: "https://youtu.be/02d5lTEU1_c?si=yLbvMdJi8N3kswiS" 
-      ],
+        }],
       ROCK: [
         { titulo: "My Own Prison", 
          autor: "Creed", 
@@ -133,7 +219,7 @@
         { titulo: "21 Guns", 
          autor: "Green Day", 
          url: "https://youtu.be/r00ikilDxW4?si=y_TzwxPTOOxfkiLn" 
-      ],
+        }],
       PUNK: [
         { titulo: "Saturday Night", 
          autor: "Misfits", 
@@ -154,13 +240,13 @@
         { titulo: "Padrão é o Caralho", 
          autor: "Black Pantera", 
          url: "https://youtu.be/7yIAlsW-BEY?si=6x2KwlGUDuFilQq1" 
-      ],
+        }],
     };
 
     // Seletores
     const selectTema = document.getElementById("tema");
     const menuUl     = document.getElementById("menu-temas");
-    const iframeEl   = document.querySelector(".video-box iframe");
+    const iframeEl   = document.querySelector(".video-frame");
     const infoTitulo = document.querySelector(".info h3");
     const infoAutor  = document.querySelector(".info p");
 
@@ -212,4 +298,3 @@
   </script>
 </body>
 </html>
-```
